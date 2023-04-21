@@ -1,0 +1,17 @@
+2023.04.16 19:10:49 INFO  Started: Metals version 0.11.11 in workspace 'D:\Usuarios\Escritorio\Tareas\2023 I\Temas III\Dashboard HTML' for client Visual Studio Code 1.77.3.
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+SLF4J: Class path contains SLF4J bindings targeting slf4j-api versions 1.7.x or earlier.
+SLF4J: Ignoring binding found at [jar:file:/C:/Users/6QW95LA_2004/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/com/outr/scribe-slf4j_2.13/3.11.0/scribe-slf4j_2.13-3.11.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See https://www.slf4j.org/codes.html#ignoredBindings for an explanation.
+2023.04.16 19:10:50 INFO  time: initialize in 1.08s
+2023.04.16 19:10:52 WARN  Build server is not auto-connectable.
+2023.04.16 19:10:52 WARN  no build tool detected in workspace 'D:\Usuarios\Escritorio\Tareas\2023 I\Temas III\Dashboard HTML'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2023.04.16 19:11:28 INFO  
+2023.04.16 19:11:28 INFO  Template applied in D:\Usuarios\Escritorio\.\hello-world
+2023.04.16 19:11:28 INFO  
+2023.04.16 19:11:28 INFO  time: ran 'giter8.Giter8' in 7.83s
+2023.04.16 19:12:43 INFO  Shutting down server
+2023.04.16 19:12:43 INFO  shutting down Metals
+2023.04.16 19:12:43 INFO  Exiting server

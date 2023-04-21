@@ -1,6 +1,8 @@
 body {
     margin: 0;
     background-color: #F8F8F8;
+    color: #2B2B2B;
+    font-family: 'Euclid Circular A';
 }
 
 @font-face {
@@ -26,7 +28,6 @@ body {
 
 .header-list li {
     list-style: none;
-    font-family: 'Euclid Circular A', sans-serif;
     font-size: 1.3rem;
     font-weight: 500;
     color: #2B2B2B;
@@ -42,28 +43,15 @@ body {
     width: 100%;
 }
 
-.left-sidebar {
-    z-index: -1;
-    position: fixed;
-    top: 0;
-    background: #FFFFFF;
-    box-shadow: 18px 0px 24px rgb(208 210 218 / 15%);
-    border-radius: 0px 20px 20px 0px;
-    width: 18%;
-    height: 100vh;
-    padding: 100px 10px 0 10px;
-}
-
 .left-sidebar ul {
     padding-inline-start: 0;
-    padding-right: 30px;
+    padding-right: 10px;
 }
 
 .left-sidebar ul li {
     list-style: none;
     margin: 0 0 25px 0;
     padding: 25px 30px 25px 30px;
-    font-family: 'Euclid Circular A', sans-serif;
     font-size: 1.1rem;
     color: #2B2B2B;
     border-radius: 20px;
@@ -77,6 +65,7 @@ body {
 }
 
 .left-sidebar .sb-items div,
+.left-sidebar .sb-items div svg,
 .left-sidebar .sb-items .arrow-icon path {
     transition: all 400ms;
 }
@@ -94,14 +83,188 @@ body {
     transition: all 400ms;
 }
 
-/* .left-sidebar .sb-items:hover #svg-div {
-    transform: rotate(-180deg)
-} */
-
-.active {
+.activeSvg {
     transform: rotate(-180deg)
 }
 
+.activeDiv {
+    color: #F47C20 !important;
+    background-color: #FFF4EC;
+}
+
+.activeSvg-C,
 .left-sidebar .sb-items:hover .arrow-icon path {
     stroke: #F47C20;
+}
+
+.main-content {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.first-col {
+    flex-basis: 18%;
+    background: #FFFFFF;
+    box-shadow: 18px 0px 24px rgb(208 210 218 / 15%);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 70px 10px 0 10px;
+}
+
+.second-col {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding: 85px 10px 70px 30px;
+}
+
+.second-col .first-row {
+    background-color: #FFFFFF;
+    box-shadow: 0px 18px 24px rgba(208, 210, 218, 0.15);
+    border-radius: 25px;
+    padding: 25px 25px;
+    height: 100%;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+}
+
+#calendar-content {
+    height: 91%;
+}
+
+.fc .fc-toolbar {
+    padding: 15px 0 0 0;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.third-col {
+    flex-basis: 32%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 85px 30px 0px 10px;
+}
+
+.third-col .first-row {
+    background-color: #FFFFFF;
+    box-shadow: 0px 18px 24px rgba(208, 210, 218, 0.15);
+    border-radius: 25px;
+    padding: 25px 25px;
+}
+
+.warnings-container {
+    max-height: 225px;
+    overflow: auto;
+}
+
+.warnings-container ul {
+    margin-top: -5px;
+    padding-inline-start: 5px;
+}
+
+.warnings-container li {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px 0 20px 0;
+    border-bottom: 2px solid #F5F6F7;
+}
+
+.warnings-container li div {
+    font-size: 16px;
+}
+
+.warnings-container li div span {
+    color: #9B9B9B;
+}
+
+.warnings-container li:last-child {
+    padding: 20px 0 0 0;
+    border-bottom: 0;
+}
+
+.third-col .second-row {
+    background-color: #FFFFFF;
+    box-shadow: 0px 18px 24px rgba(208, 210, 218, 0.15);
+    border-radius: 25px;
+    padding: 25px 25px;
+}
+
+.title-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.svg-container {
+    border-radius: 50%;
+    width: 29px;
+    padding: 10px 10px 10px 14px;
+}
+
+.svg-container:hover {
+    cursor: pointer;
+    background-color: #F5F6F7;
+}
+
+.activity-container {
+    max-height: 250px;
+    height: 225px;
+    overflow: auto;
+}
+
+.activity-container ul {
+    margin-top: -10px;
+    padding-inline-start: 0;
+}
+
+.activity-container li {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 2px solid #F5F6F7;
+}
+
+.activity-container .date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #9B9B9B;
+}
+
+.activity-container li div span {
+    color: #9B9B9B;
+}
+
+.activity-container li:last-child {
+    padding: 20px 0 0 0;
+    border-bottom: 0;
+}
+
+.fc .fc-daygrid-day-number {
+    padding: 4px 20px 4px 0 !important;
+    position: relative;
+    z-index: 4;
 }

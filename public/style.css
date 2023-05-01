@@ -48,9 +48,9 @@ body {
     padding-right: 10px;
 }
 
-.left-sidebar ul li {
+.left-sidebar ul .sb-items{
     list-style: none;
-    margin: 0 0 25px 0;
+    margin: 25px 0 0px 0;
     padding: 25px 30px 25px 30px;
     font-size: 1.1rem;
     color: #2B2B2B;
@@ -77,6 +77,19 @@ body {
 
 .left-sidebar .sb-items:hover div {
     color: #F47C20;
+}
+
+.locks-sidebar {
+    padding: 0;
+    margin: 0;
+}
+
+.locks-sidebar ul li{
+    padding: 5px 10px 5px 30px;
+}
+
+.locks-sidebar ul li:hover{
+    cursor: pointer;
 }
 
 #svg-div {

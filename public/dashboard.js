@@ -1,3 +1,5 @@
+let locksData = []
+
 function buttonSidebar(n) {
     let sidebarSvg = document.querySelector(`.left-sidebar ul li:nth-child(${n}) #svg-div`);
     sidebarSvg.classList.toggle('activeSvg');
@@ -31,6 +33,97 @@ function buttonSidebar(n) {
     }
 }
 
+const saveLocksData = async (locks) => {
+    locksData = locks
+    console.log("locks data saved!")
+    console.log(locks)
+}
+
+const showSchedule = (event) => {
+    let lockSchedule = event.data.schedule
+    console.log(lockSchedule)
+}
+
+const getLocksData = async () => {
+    let res = await fetch (`/locks`)
+    let locksData = await res.json()
+    return locksData
+}
+
+const openLockSVG = `<svg width="15" height="22" viewBox="0 0 20 27" fill="none"
+xmlns="http://www.w3.org/2000/svg">
+<path
+    d="M16.1257 12.5H2.89071C1.8465 12.5 1 13.5582 1 14.8636V23.1364C1 24.4418 1.8465 25.5 2.89071 25.5H16.1257C17.1699 25.5 18.0164 24.4418 18.0164 23.1364V14.8636C18.0164 13.5582 17.1699 12.5 16.1257 12.5Z"
+    stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round" />
+<path
+    d="M4.51447 8V5.78261C4.51447 4.51418 5.04205 3.29771 5.98116 2.40079C6.92027 1.50388 8.19398 1 9.52208 1C10.8502 1 12.1239 1.50388 13.063 2.40079C14.0021 3.29771 14.5297 4.51418 14.5297 5.78261V12"
+    stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round" />
+</svg>`
+
+const closedLockSVG = `closed lock`
+
+const showLocksOnSidebar = async (locks) => {
+    locks.forEach(lock => {
+        let lockSchool = ""
+        if (lock.id.includes("IA")){
+            lockSchool = "ia"
+        } else if (lock.id.includes("CI")){
+            lockSchool = "ci"
+        } else if (lock.id.includes("NE")){
+            lockSchool = "ne"
+        } else if (lock.id.includes("CS")){
+            lockSchool = "cs"
+        } else if (lock.id.includes("LA")){
+            lockSchool = "la"
+        }
+        $(`#${lockSchool}-locks ul`).append(
+            `<li id="${lock.id}">
+                ${lock.current_state === "open" ? openLockSVG : closedLockSVG   }
+                ${lock.id}
+            </li>`
+        )
+        $(`#${lock.id}`).click(lock, showSchedule)
+    })
+}
+
+const showLogs = async (locks) => {
+    locks.sort(function(a,b){
+        return new Date(b.last_activity.date) - new Date(a.last_activity.date);
+    });
+
+    locks.forEach(lock => {
+        let logDate = new Date(lock.last_activity.date)
+        $(`.activity-container  ul`).append(
+            `<li>
+            <div class="date">
+                <div class="time">
+                    ${logDate.toLocaleTimeString()}
+                </div>
+                <div class="day">
+                    ${logDate.toLocaleDateString()}
+                </div>
+            </div>
+            <div>${lock.last_activity.message}</div>
+        </li>`
+        )
+
+    })
+}
+
+const showWarnings = async (locks) => {
+    locks.forEach(lock => {
+        if (lock.warning){
+            $(`.warnings-container  ul`).append(
+                `<li>
+                    <div>${lock.warning}</div>
+                </li>`
+            )
+        }
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar-content');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -39,3 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     calendar.render();
 });
+
+getLocksData().then(locks => {
+    saveLocksData(locks)
+    showLocksOnSidebar(locks)
+    showLogs(locks)
+    showWarnings(locks)
+})

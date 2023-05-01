@@ -8,6 +8,7 @@
     <title>Smart Lock Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -40,6 +41,9 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
+                            <li id="ia-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
                         </li>
                         <li class="sb-items" onclick="buttonSidebar(2)">
                             <div>Ciencias</div>
@@ -52,6 +56,9 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
+                            <li id="ci-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
                         </li>
                         <li class="sb-items" onclick="buttonSidebar(3)">
                             <div>Negocios</div>
@@ -64,6 +71,9 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
+                            <li id="ne-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
                         </li>
                         <li class="sb-items" onclick="buttonSidebar(4)">
                             <div>Ciencias sociales</div>
@@ -76,6 +86,9 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
+                            <li id="cs-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
                         </li>
                         <li class="sb-items" onclick="buttonSidebar(5)">
                             <div>Laboratorios</div>
@@ -88,6 +101,9 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
+                            <li id="la-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
                         </li>
                     </ul>
                 </div>
@@ -145,62 +161,7 @@
                     </div>
                     <div class="warnings-container">
                         <ul>
-                            <li>
-                                <svg width="15" height="22" viewBox="0 0 20 27" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.1257 12.5H2.89071C1.8465 12.5 1 13.5582 1 14.8636V23.1364C1 24.4418 1.8465 25.5 2.89071 25.5H16.1257C17.1699 25.5 18.0164 24.4418 18.0164 23.1364V14.8636C18.0164 13.5582 17.1699 12.5 16.1257 12.5Z"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M4.51447 8V5.78261C4.51447 4.51418 5.04205 3.29771 5.98116 2.40079C6.92027 1.50388 8.19398 1 9.52208 1C10.8502 1 12.1239 1.50388 13.063 2.40079C14.0021 3.29771 14.5297 4.51418 14.5297 5.78261V12"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <div>El candado 1346 <span>(Salón IA - 109)</span> está abierto</div>
-                            </li>
-                            <li>
-                                <svg width="15" height="22" viewBox="0 0 20 27" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.1257 12.5H2.89071C1.8465 12.5 1 13.5582 1 14.8636V23.1364C1 24.4418 1.8465 25.5 2.89071 25.5H16.1257C17.1699 25.5 18.0164 24.4418 18.0164 23.1364V14.8636C18.0164 13.5582 17.1699 12.5 16.1257 12.5Z"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M4.51447 8V5.78261C4.51447 4.51418 5.04205 3.29771 5.98116 2.40079C6.92027 1.50388 8.19398 1 9.52208 1C10.8502 1 12.1239 1.50388 13.063 2.40079C14.0021 3.29771 14.5297 4.51418 14.5297 5.78261V12"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <div>El candado 1349 <span>(Salón IA - 112)</span> está abierto</div>
-                            </li>
-                            <li>
-                                <svg width="15" height="22" viewBox="0 0 20 27" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.1257 12.5H2.89071C1.8465 12.5 1 13.5582 1 14.8636V23.1364C1 24.4418 1.8465 25.5 2.89071 25.5H16.1257C17.1699 25.5 18.0164 24.4418 18.0164 23.1364V14.8636C18.0164 13.5582 17.1699 12.5 16.1257 12.5Z"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M4.51447 8V5.78261C4.51447 4.51418 5.04205 3.29771 5.98116 2.40079C6.92027 1.50388 8.19398 1 9.52208 1C10.8502 1 12.1239 1.50388 13.063 2.40079C14.0021 3.29771 14.5297 4.51418 14.5297 5.78261V12"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <div>El candado 1349 <span>(Salón IA - 112)</span> está abierto</div>
-                            </li>
-                            <li>
-                                <svg width="15" height="22" viewBox="0 0 20 27" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.1257 12.5H2.89071C1.8465 12.5 1 13.5582 1 14.8636V23.1364C1 24.4418 1.8465 25.5 2.89071 25.5H16.1257C17.1699 25.5 18.0164 24.4418 18.0164 23.1364V14.8636C18.0164 13.5582 17.1699 12.5 16.1257 12.5Z"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M4.51447 8V5.78261C4.51447 4.51418 5.04205 3.29771 5.98116 2.40079C6.92027 1.50388 8.19398 1 9.52208 1C10.8502 1 12.1239 1.50388 13.063 2.40079C14.0021 3.29771 14.5297 4.51418 14.5297 5.78261V12"
-                                        stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <div>El candado 1349 <span>(Salón IA - 112)</span> está abierto</div>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -232,39 +193,7 @@
                     </div>
                     <div class="activity-container">
                         <ul>
-                            <li>
-                                <div class="date">
-                                    <div class="time">
-                                        11:00:00
-                                    </div>
-                                    <div class="day">
-                                        20/02/23
-                                    </div>
-                                </div>
-                                <div>El usuario con ID 162976 abrió el candado 134 <span>(Salón IA - 110)</span></div>
-                            </li>
-                            <li>
-                                <div class="date">
-                                    <div class="time">
-                                        11:00:00
-                                    </div>
-                                    <div class="day">
-                                        20/02/23
-                                    </div>
-                                </div>
-                                <div>El usuario con ID 162976 abrió el candado 134 <span>(Salón IA - 110)</span></div>
-                            </li>
-                            <li>
-                                <div class="date">
-                                    <div class="time">
-                                        11:00:00
-                                    </div>
-                                    <div class="day">
-                                        20/02/23
-                                    </div>
-                                </div>
-                                <div>El usuario con ID 162976 abrió el candado 134 <span>(Salón IA - 110)</span></div>
-                            </li>
+                        
                         </ul>
                     </div>
                 </div>

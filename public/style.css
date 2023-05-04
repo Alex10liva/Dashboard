@@ -281,3 +281,36 @@ body {
     position: relative;
     z-index: 4;
 }
+
+/* Estadisticas */
+.second-col .first-row-e {
+    background-color: #FFFFFF;
+    box-shadow: 0px 18px 24px rgba(208, 210, 218, 0.15);
+    border-radius: 25px;
+    padding: 25px 25px;
+    height: 100%;
+}
+
+/* .second-col .first-row-e {
+    background-color: #FFFFFF;
+    box-shadow: 0px 18px 24px rgba(208, 210, 218, 0.15);
+    border-radius: 25px;
+    padding: 25px 25px;
+    max-height: 280px;
+} */
+
+.second-col .first-row-e .title,
+.second-col .second-row-e .title{
+    justify-content: center;
+}
+
+/* .second-col{
+    gap: 20px;
+}
+.second-col .second-row-e {
+    background-color: #FFFFFF;
+    box-shadow: 0px 18px 24px rgba(208, 210, 218, 0.15);
+    border-radius: 25px;
+    padding: 25px 25px;
+    max-height: 260px;
+} */

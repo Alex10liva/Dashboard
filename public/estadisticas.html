@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Lock Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+    <div>
+        <header class="header">
+            <div>
+                <img class="logo" src="Resources\logo-UDLAP.png" alt="">
+            </div>
+            <div class="list-container">
+                <ul class="header-list">
+                    <li>Inicio</li>
+                    <li>Estadísticas</li>
+                    <li>Configuraciones</li>
+                    <li>Cerrar sesión</li>
+                </ul>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="first-col">
+                <div class="left-sidebar">
+                    <ul>
+                        <li class="sb-items" onclick="buttonSidebar(1)">
+                            <div>Todos los candados</div>
+                            <li id="ia-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
+                        </li>
+                        <li class="sb-items" onclick="buttonSidebar(2)">
+                            <div>Ingenierías</div>
+                            <div id="svg-div">
+                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <li id="ia-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
+                        </li>
+                        <li class="sb-items" onclick="buttonSidebar(3)">
+                            <div>Ciencias</div>
+                            <div id="svg-div">
+                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <li id="ci-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
+                        </li>
+                        <li class="sb-items" onclick="buttonSidebar(4)">
+                            <div>Negocios</div>
+                            <div id="svg-div">
+                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <li id="ne-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
+                        </li>
+                        <li class="sb-items" onclick="buttonSidebar(5)">
+                            <div>Ciencias sociales</div>
+                            <div id="svg-div">
+                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <li id="cs-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
+                        </li>
+                        <li class="sb-items" onclick="buttonSidebar(6)">
+                            <div>Laboratorios</div>
+                            <div id="svg-div">
+                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <li id="la-locks" class="locks-sidebar">
+                                <ul></ul>
+                            </li> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="second-col">
+                <div class="first-row-e">
+                    <div class="title">
+                        <!-- <span>Numero total de personas en el semestre</span> -->
+                        <span>Numero total de personas por día</span>
+                    </div>
+                    <div id="chart-horizontal"></div>
+                    <!-- <div id="chart-vertical"></div> -->
+                </div>
+                <div class="second-row-e">
+                    <div class="title">
+                        <!-- <span>Horas al día más ocupadas</span> -->
+                    </div>
+                    <!-- <div id="chart_hours"></div> -->
+                </div>
+            </div>
+            <div class="third-col">
+                <div class="first-row">
+                    <div class="title">
+                        <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.036 2.71064L1.30783 19.5467C1.10726 19.9067 1.00113 20.315 1.00001 20.7308C0.998886 21.1466 1.10281 21.5555 1.30143 21.9167C1.50005 22.2779 1.78646 22.579 2.13215 22.7898C2.47784 23.0007 2.87077 23.1141 3.27184 23.1186H22.7282C23.1292 23.1141 23.5222 23.0007 23.8679 22.7898C24.2135 22.579 24.4999 22.2779 24.6986 21.9167C24.8972 21.5555 25.0011 21.1466 25 20.7308C24.9989 20.315 24.8927 19.9067 24.6922 19.5467L14.964 2.71064C14.7593 2.36071 14.471 2.07139 14.1269 1.8706C13.7829 1.66981 13.3948 1.56433 13 1.56433C12.6052 1.56433 12.2171 1.66981 11.8731 1.8706C11.529 2.07139 11.2407 2.36071 11.036 2.71064Z"
+                                stroke="#EED202" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13 8.83063V13.5933" stroke="#EED202" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M13 18.356H13.0115" stroke="#EED202" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span>Advertencias</span>
+                    </div>
+                    <div class="warnings-container">
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="second-row">
+                    <div class="title-container">
+                        <div class="title">
+                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z"
+                                    stroke="#2B2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M13 7.5V13.5L17 15.5" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>Actividad reciente</span>
+                        </div>
+                        <div class="svg-container">
+                            <svg class="download-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M25 17V22.3333C25 23.0406 24.719 23.7189 24.219 24.219C23.7189 24.719 23.0406 25 22.3333 25H3.66667C2.95942 25 2.28115 24.719 1.78105 24.219C1.28095 23.7189 1 23.0406 1 22.3333V17"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M6.33337 10.3333L13 17L19.6667 10.3333" stroke="black" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M13 17V1" stroke="black" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="activity-container">
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

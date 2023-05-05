@@ -42,6 +42,30 @@ const saveLocksData = async (locks) => {
 const showSchedule = (event) => {
     let lockSchedule = event.data.schedule
     console.log(lockSchedule)
+
+    var calendarEl = document.getElementById('calendar-content');
+    let events = []
+    lockSchedule.forEach(event => {
+      events.push({
+        title: event["student_id"],
+        start: event.start,
+        end: event.end,
+        allDay: false
+      })
+    })
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        events: events,
+        eventTimeFormat: { // like '14:30:00'
+          hour: '2-digit',
+          minute: '2-digit',
+        },
+        locale: 'es',
+        displayEventEnd: true,
+        slotDuration: '01:00:00',
+        initialView: 'dayGridMonth'
+    });
+    calendar.render();
 }
 
 const getLocksData = async () => {
@@ -62,7 +86,10 @@ xmlns="http://www.w3.org/2000/svg">
     stroke-linejoin="round" />
 </svg>`
 
-const closedLockSVG = `closed lock`
+const closedLockSVG = `<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.3949 8.20001H2.98687C2.16569 8.20001 1.5 8.91636 1.5 9.80001V15.4C1.5 16.2837 2.16569 17 2.98687 17H13.3949C14.2161 17 14.8818 16.2837 14.8818 15.4V9.80001C14.8818 8.91636 14.2161 8.20001 13.3949 8.20001Z" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.00916 8.2V5C4.00916 3.93913 4.44974 2.92172 5.23398 2.17157C6.01822 1.42143 7.08189 1 8.19097 1C9.30006 1 10.3637 1.42143 11.148 2.17157C11.9322 2.92172 12.3728 3.93913 12.3728 5V8.2" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`
 
 const showLocksOnSidebar = async (locks) => {
     locks.forEach(lock => {
@@ -129,12 +156,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         events: [
             {
-                title: '162976 IA-109',
-                start: '2023-05-04',
-                end: '2023-05-05'
-            }
+                title: '162976',
+                start: '2023-05-04T14:00:00',
+                end: '2023-05-04T16:00:00',
+                allDay: false,
+                
+            },
         ],
+        eventTimeFormat: { // like '14:30:00'
+          hour: '2-digit',
+          minute: '2-digit',
+        },
         locale: 'es',
+        displayEventEnd: true,
+        slotDuration: '01:00:00',
         initialView: 'dayGridMonth'
     });
     calendar.render();

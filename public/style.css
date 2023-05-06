@@ -9,6 +9,17 @@ li {
     list-style-type: none;
 }
 
+.fc-daygrid-dot-event {
+    align-items: center;
+    display: flex;
+    padding: 2px 0;
+    flex-wrap: wrap;
+}
+
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+    margin-right: -8px;
+}
+
 .header {
     z-index: 10;
     display: flex;

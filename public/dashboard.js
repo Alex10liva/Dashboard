@@ -35,7 +35,7 @@ const showSchedule = (event) => {
     let events = []
     lockSchedule.forEach(event => {
       events.push({
-        title: event["student_id"],
+        title: "ID " + event["student_id"],
         start: event.start,
         end: event.end,
         allDay: false
@@ -43,15 +43,15 @@ const showSchedule = (event) => {
     })
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        events: events,
-        eventTimeFormat: { // like '14:30:00'
-          hour: '2-digit',
-          minute: '2-digit',
-        },
-        locale: 'es',
-        displayEventEnd: true,
-        slotDuration: '01:00:00',
-        initialView: 'dayGridMonth'
+      events: events,
+      eventTimeFormat: { // like '14:30:00'
+        hour: '2-digit',
+        minute: '2-digit',
+      },
+      locale: 'es',
+      displayEventEnd: true,
+      slotDuration: '01:00:00',
+      initialView: 'dayGridMonth'
     });
     calendar.render();
 }

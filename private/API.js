@@ -3,7 +3,8 @@ var locks = [
     "id": "IA-109",
     "schedule": [{"start": "2023-05-04T14:00:00", "end": "2023-05-04T16:00:00", "student_id" : "166710"},
     {"start": "2023-05-14T14:00:00", "end": "2023-05-14T16:00:00", "student_id" : "168253"},
-    {"start": "2023-05-10T13:00:00", "end": "2023-05-10T14:00:00", "student_id" : "165377"}],
+    {"start": "2023-05-10T10:00:00", "end": "2023-05-10T12:00:00", "student_id" : "165377"},
+    {"start": "2023-05-10T13:00:00", "end": "2023-05-10T14:00:00", "student_id" : "162976"}],
     "last_activity" : {
       "message": "El usuario con ID 166710 abrió el candado del Salón <span>IA - 109</span>", 
       "date": "2023-05-04T14:00:00",

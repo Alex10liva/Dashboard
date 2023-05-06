@@ -5,6 +5,10 @@ body {
     font-family: 'Euclid Circular A';
 }
 
+li {
+    list-style-type: none;
+}
+
 @font-face {
     font-family: 'Euclid Circular A';
     src: url('Resources\Font\Euclid Circular A Regular.ttf');
@@ -75,20 +79,23 @@ body {
     background-color: #FFF4EC;
 }
 
-.left-sidebar .sb-items:hover div {
-    color: #F47C20;
-}
-
 .locks-sidebar {
     padding: 0;
     margin: 0;
 }
 
-.locks-sidebar ul li{
-    padding: 5px 10px 5px 30px;
+.locks-sidebar li{
+    margin: 5px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 25px;
+    width: fit-content;
 }
 
-.locks-sidebar ul li:hover{
+.active-lock {
+    background-color: lightgreen;
+}
+
+.locks-sidebar li:hover{
     cursor: pointer;
 }
 
@@ -310,7 +317,7 @@ body {
     justify-content: center;
 }
 
-/* .second-col{
+.second-col{
     gap: 20px;
 }
 .second-col .second-row-e {
@@ -319,4 +326,8 @@ body {
     border-radius: 25px;
     padding: 25px 25px;
     max-height: 260px;
-} */
+}
+
+.inactive {
+    display: none;
+}

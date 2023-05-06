@@ -10,6 +10,14 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        function openHome(){
+        window.open("/", "_self")
+       }
+       function openStatistics(){
+        window.open("/estadisticas", "_self")
+       }
+    </script>
 </head>
 
 <body>
@@ -20,8 +28,8 @@
             </div>
             <div class="list-container">
                 <ul class="header-list">
-                    <li>Inicio</li>
-                    <li>Estadísticas</li>
+                    <li onclick="openHome()">Inicio</li>
+                    <li onclick="openStatistics()">Estadísticas</li>
                     <li>Configuraciones</li>
                     <li>Cerrar sesión</li>
                 </ul>
@@ -31,86 +39,95 @@
             <div class="first-col">
                 <div class="left-sidebar">
                     <ul>
-                        <li class="sb-items" onclick="buttonSidebar(1)">
-                            <div>Todos los candados</div>
-                            <li id="ia-locks" class="locks-sidebar">
-                                <ul></ul>
-                            </li> 
-                        </li>
-                        <li class="sb-items" onclick="buttonSidebar(2)">
-                            <div>Ingenierías</div>
-                            <div id="svg-div">
-                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+                        <li onclick="showAllData()">
+                            <div class="sb-items">
+                                <div>Todos los Candados</div>
                             </div>
-                            <li id="ia-locks" class="locks-sidebar">
-                                <ul></ul>
-                            </li> 
                         </li>
-                        <li class="sb-items" onclick="buttonSidebar(3)">
-                            <div>Ciencias</div>
-                            <div id="svg-div">
-                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+                        <li>
+                            <div class="sb-items" onclick="buttonSidebar(2)">
+                                <div>Ingenierías</div>
+                                <div id="svg-div">
+                                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
                             </div>
-                            <li id="ci-locks" class="locks-sidebar">
+                            <div id="ia-locks" class="locks-sidebar inactive">
                                 <ul></ul>
-                            </li> 
+                            </div> 
                         </li>
-                        <li class="sb-items" onclick="buttonSidebar(4)">
-                            <div>Negocios</div>
-                            <div id="svg-div">
-                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+                        <li>
+                            <div class="sb-items" onclick="buttonSidebar(3)">
+                                <div>Ciencias</div>
+                                <div id="svg-div">
+                                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
                             </div>
-                            <li id="ne-locks" class="locks-sidebar">
+                            <div id="ci-locks" class="locks-sidebar inactive">
                                 <ul></ul>
-                            </li> 
+                            </div> 
                         </li>
-                        <li class="sb-items" onclick="buttonSidebar(5)">
-                            <div>Ciencias sociales</div>
-                            <div id="svg-div">
-                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+                        <li>
+                            <div class="sb-items" onclick="buttonSidebar(4)">
+                                <div>Negocios</div>
+                                <div id="svg-div">
+                                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
                             </div>
-                            <li id="cs-locks" class="locks-sidebar">
+                            <div id="ne-locks" class="locks-sidebar inactive">
                                 <ul></ul>
-                            </li> 
+                            </div> 
                         </li>
-                        <li class="sb-items" onclick="buttonSidebar(6)">
-                            <div>Laboratorios</div>
-                            <div id="svg-div">
-                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+                        <li>
+                            <div class="sb-items" onclick="buttonSidebar(5)">
+                                <div>Ciencias sociales</div>
+                                <div id="svg-div">
+                                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
                             </div>
-                            <li id="la-locks" class="locks-sidebar">
+                            <div id="cs-locks" class="locks-sidebar inactive">
                                 <ul></ul>
-                            </li> 
+                            </div> 
+                        </li>
+                        <li>
+                            <div class="sb-items" onclick="buttonSidebar(6)">
+                                <div>Laboratorios</div>
+                                <div id="svg-div">
+                                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 1V15" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 8L8 15L1 8" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div id="la-locks" class="locks-sidebar inactive">
+                                <ul></ul>
+                            </div> 
                         </li>
                     </ul>
                 </div>
@@ -118,17 +135,17 @@
             <div class="second-col">
                 <div class="first-row-e">
                     <div class="title">
-                        <!-- <span>Numero total de personas en el semestre</span> -->
-                        <span>Numero total de personas por día</span>
+                        <span class="statistic inactive">Numero total de personas en el semestre</span>
+                        <span class="statistic">Numero total de personas por candado</span>
                     </div>
-                    <div id="chart-horizontal"></div>
-                    <!-- <div id="chart-vertical"></div> -->
+                    <div id="chart-horizontal" class="statistic"></div>
+                    <div id="chart-vertical" class="statistic inactive"></div>
                 </div>
                 <div class="second-row-e">
                     <div class="title">
-                        <!-- <span>Horas al día más ocupadas</span> -->
+                        <span class="statistic inactive">Horas al día más ocupadas</span>
                     </div>
-                    <!-- <div id="chart_hours"></div> -->
+                    <div id="chart_hours" class="statistic inactive"></div>
                 </div>
             </div>
             <div class="third-col">
@@ -186,7 +203,7 @@
             </div>
         </div>
     </div>
-    <script src="dashboard.js"></script>
+    <script src="statistics.js"></script>
 </body>
 
 </html>

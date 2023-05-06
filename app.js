@@ -17,6 +17,10 @@ app.get('/', function(request, response) {
     response.sendFile(__dirname + '/public/inicio.html');
 });
 
+app.get('/estadisticas', function(request, response) {
+    response.sendFile(__dirname + '/public/estadisticas.html');
+});
+
 app.get('/locks', getLocksData)
 
 app.listen(3000, function() {

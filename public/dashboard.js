@@ -7,30 +7,11 @@ function buttonSidebar(n) {
     let sidebarPaths = document.querySelectorAll(`.left-sidebar ul li:nth-child(${n}) #svg-div .arrow-icon path`);
     sidebarPaths.forEach(path => path.classList.toggle('activeSvg-C'));
 
-    let sidebarDiv = document.querySelector(`.left-sidebar ul li:nth-child(${n})`);
+    let sidebarDiv = document.querySelector(`.left-sidebar ul li:nth-child(${n}) .sb-items`);
     sidebarDiv.classList.toggle('activeDiv')
 
-    let sideBarN = document.querySelector(`.left-sidebar ul`);
-
-    for (let i = 1; i < sideBarN.childElementCount + 1; i++) {
-        if (i != n) {
-            sidebarSvg = document.querySelector(`.left-sidebar ul li:nth-child(${i}) #svg-div`);
-            if (sidebarSvg.classList.contains('activeSvg')) {
-                sidebarSvg.classList.remove('activeSvg')
-            }
-
-            sidebarPaths = document.querySelectorAll(`.left-sidebar ul li:nth-child(${i}) #svg-div .arrow-icon path`);
-            for (let i = 0; i < sidebarPaths.length; i++) {
-                if (sidebarPaths[i].classList.contains('activeSvg-C')) {
-                    sidebarPaths[i].classList.remove('activeSvg-C')
-                }
-            }
-            sidebarDiv = document.querySelector(`.left-sidebar ul li:nth-child(${i})`);
-            if (sidebarDiv.classList.contains('activeDiv')) {
-                sidebarDiv.classList.remove('activeDiv')
-            }
-        }
-    }
+    let locks = document.querySelector(`.left-sidebar ul li:nth-child(${n}) .locks-sidebar`);
+    locks.classList.toggle('inactive')
 }
 
 const saveLocksData = async (locks) => {
@@ -42,6 +23,13 @@ const saveLocksData = async (locks) => {
 const showSchedule = (event) => {
     let lockSchedule = event.data.schedule
     console.log(lockSchedule)
+    $('.is-lock').each( function(index) {
+        if ($(this).text().includes(event.data.id)) {
+            $(this).addClass('active-lock')
+        } else {
+            $(this).removeClass('active-lock')
+        }
+    })
 
     var calendarEl = document.getElementById('calendar-content');
     let events = []
@@ -105,8 +93,8 @@ const showLocksOnSidebar = async (locks) => {
         } else if (lock.id.includes("LA")){
             lockSchool = "la"
         }
-        $(`#${lockSchool}-locks ul`).append(
-            `<li id="${lock.id}">
+        $(`#${lockSchool}-locks`).append(
+            `<li id="${lock.id}" class="is-lock">
                 ${lock.current_state === "open" ? openLockSVG : closedLockSVG   }
                 ${lock.id}
             </li>`
@@ -155,13 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar-content');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         events: [
-            {
-                title: '162976',
-                start: '2023-05-04T14:00:00',
-                end: '2023-05-04T16:00:00',
-                allDay: false,
-                
-            },
+            
         ],
         eventTimeFormat: { // like '14:30:00'
           hour: '2-digit',
@@ -181,144 +163,3 @@ getLocksData().then(locks => {
     showLogs(locks)
     showWarnings(locks)
 })
-
-// Chart horizontal
-var options_horizontal = {
-    series: [{
-        name: 'N° de personas',
-        data: [123, 155]
-      }],
-      chart: {
-        type: 'bar',
-        height: 550,
-        scrollable: true
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 5,
-          horizontal: true,
-          colors: {
-            // ordenar los datos en orden ascendente
-            dataSortIndex: 0,
-            // asignar un arreglo de colores con tonalidades más oscuras de azul
-            ranges: [
-              {
-                from: 0,
-                to: 100,
-                color: '#B9E9FE'
-              },
-              {
-                from: 100,
-                to: 150,
-                color: '#72D5FF'
-              },
-              {
-                from: 150,
-                to: 200,
-                color: '#33C2FF'
-              }
-            ]
-          }
-        }
-      },
-      dataLabels: {
-        enabled: true,
-        style: {
-          fontSize: '14px',
-          fontFamily: 'Euclid Circular A',
-          colors: ['266A87']
-        }
-      },
-      xaxis: {
-          categories: ['1346 (Salón IA - 109)', '1347 (Salón IA - 110)'],
-          
-        }  
-};
-  
-var chart_horizontal = new ApexCharts(document.querySelector("#chart-horizontal"), options_horizontal);
-chart_horizontal.render();
-
-// Chart vertical
-var options_vertical = {
-    series: [{
-        name: 'N° de personas',
-        data: [7, 17]
-      }],
-      chart: {
-        type: 'bar',
-        height: 265
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 5,
-          horizontal: false,
-          colors: {
-            // ordenar los datos en orden ascendente
-            dataSortIndex: 0,
-            // asignar un arreglo de colores con tonalidades más oscuras de azul
-            ranges: [
-              {
-                from: 0,
-                to: 5,
-                color: '#E5F7FF'
-              },
-              {
-                from: 5,
-                to: 10,
-                color: '#D1F1FF'
-              },
-              {
-                from: 10,
-                to: 15,
-                color: '#A1E3FF'
-              },
-              {
-                from: 15,
-                to: 20,
-                color: '#72D5FF'
-              }
-            ]
-          }
-        }
-      },
-      dataLabels: {
-        enabled: true,
-        style: {
-          fontSize: '14px',
-          fontFamily: 'Euclid Circular A',
-          colors: ['266A87']
-        }
-      },
-      xaxis: {
-          categories: ['12/02', '14/02']
-        }
-    };
-var chart_vertical = new ApexCharts(document.querySelector("#chart-vertical"), options_vertical);
-chart_vertical.render();
-
-// Chart hours
-var options_hours = {
-    series: [{
-      name: "N° de personas",
-      data: [6, 9]
-  }],
-    chart: {
-    height: 230,
-    type: 'line',
-    zoom: {
-      enabled: false
-    }
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    curve: 'smooth'
-  },
-  xaxis: {
-    categories: ['07:00', '08:00'],
-  }
-  };
-
-  var chart_hours = new ApexCharts(document.querySelector("#chart_hours"), options_hours);
-  chart_hours.render();

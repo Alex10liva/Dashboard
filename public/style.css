@@ -10,9 +10,18 @@ li {
 }
 
 @font-face {
-    font-family: 'Euclid Circular A';
-    src: url('Resources\Font\Euclid Circular A Regular.ttf');
-}
+    font-family: 'EuclidCircularA';
+    src: url(/Resources/fonts/EuclidCircularARegular.ttf) format('truetype');
+    font-weight: 400; /* Peso regular */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'EuclidCircularA';
+    src: url(/Resources/fonts/EuclidCircularAMedium.ttf) format('truetype');
+    font-weight: 500; /* Peso medium */
+    font-style: normal;
+  }
 
 .header {
     z-index: 10;

@@ -129,7 +129,7 @@ const showGraphics = (event) => {
     
     let data = []
     let categories = []
-    let hoursdata = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let hoursdata = [0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0]
     let hourscategories = [
         "7:00:00 AM",
         "8:00:00 AM", 

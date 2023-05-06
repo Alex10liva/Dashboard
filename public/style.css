@@ -2,26 +2,12 @@ body {
     margin: 0;
     background-color: #F8F8F8;
     color: #2B2B2B;
-    font-family: 'Euclid Circular A';
+    font-family: 'Euclid Circular A', sans-serif;
 }
 
 li {
     list-style-type: none;
 }
-
-@font-face {
-    font-family: 'EuclidCircularA';
-    src: url(/Resources/fonts/Euclid-Circular-A-Regular.ttf) format('truetype');
-    font-weight: 400; /* Peso regular */
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'EuclidCircularA';
-    src: url(/Resources/fonts/Euclid-Circular-A-Medium.ttf) format('truetype');
-    font-weight: 500; /* Peso medium */
-    font-style: normal;
-  }
 
 .header {
     z-index: 10;
